@@ -2,6 +2,12 @@
 
 use App\Http\Controllers\CategoryCotroller;
 use App\Http\Controllers\CropController;
+use App\Http\Controllers\FarmController;
+use App\Http\Controllers\farmCropController;
+use App\Http\Controllers\farmRegisterController;
+use App\Http\Controllers\LeaseController;
+use App\Http\Controllers\NoteControlller;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,4 +27,13 @@ Route::get('/', function () {
 
 Route::resource('crop', CropController::class);
 Route::resource('category', CategoryCotroller::class);
+Route::resource('farm', FarmController::class);
+Route::resource('note', NoteControlller::class);
+Route::resource('lease', LeaseController::class);
+Route::resource('farm-crop', farmCropController::class);
+Route::resource('register', farmRegisterController::class);
+
+Route::group(['middleware'=>['auth']] ,function(){
+
+});
 

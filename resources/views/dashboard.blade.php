@@ -27,5 +27,10 @@
                     </div>
                 </div>
             </div>
+            <script type="text/javascript">
+                document.addEventListener('DOMContentLoaded',function (){
+                   swal('hello  world')
+                });
+            </script>
         </main>
 @endsection

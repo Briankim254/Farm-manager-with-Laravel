@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\crop;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CropController extends Controller
 {
@@ -15,7 +16,9 @@ class CropController extends Controller
     public function index()
     {
         $crops = crop::all();
-
+        if (session('success_message')){
+            Alert::toast(session('success_message'),'success')->autoClose(4000);
+        }
         return view('crop.index',compact('crops'));
     }
 
@@ -42,7 +45,7 @@ class CropController extends Controller
             'description'=> $request->input('description'),
             'duration'=>$request->input('duration')
         ]);
-        return redirect()->route('crop.index');
+        return redirect()->route('crop.index')->withSuccessMessage('Crop added successfully');
     }
 
     /**
@@ -81,19 +84,18 @@ class CropController extends Controller
         'description'=> $request->input('description'),
         'duration'=>$request->input('duration')
     ]);
-        return redirect()->route('crop.index');
+        return redirect()->route('crop.index')->withSuccessMessage('category updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\crop  $crop
-     * @return \Illuminate\Http\Response
+     * @return \Ill return redirect()->route('crop.index');uminate\Http\Response
      */
     public function destroy(crop $crop)
     {
         $crop->delete();
-
-        return redirect()->route('crop.index');
+        return redirect()->route('crop.index')->withSuccessMessage('farm record deleted successfully');
     }
 }

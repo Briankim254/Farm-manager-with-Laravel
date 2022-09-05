@@ -14,8 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('farm_notes', function (Blueprint $table) {
+            $table->id();
             $table->string('farm_crop_id');
             $table->text('notes');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('farm_notes');
+       // Schema::dropIfExists('farm_notes');
     }
 };

@@ -15,22 +15,22 @@
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputname" type="text" placeholder="Enter your category name" name="name" />
+                                                        <input required class="form-control" id="inputname" type="text" placeholder="Enter your category name" name="name" />
                                                         <label for="inputname">Category name</label>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputDescription" type="text" placeholder="write a brief something about the category" name="description"/>
-                                                <label for="inputDescription">Description</label>
-                                            </div>
-                                            <div class="row mb-3">
                                                 <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputparentcategoryid" type="string" placeholder="State the parent category id" name="parent_category_id"/>
-                                                        <label for="inputparentcategoryid">parent category id</label>
-                                                    </div>
+                                                        <select class="form-select" aria-label="Default select example" name="parent_category_id">
+                                                            <option value="" selected> select parent</option>
+                                                            @foreach($mains as $main)
+                                                            <option value="{{$main->id}}">{{$main->name}}</option>
+                                                            @endforeach
+                                                        </select>
                                                 </div>
+                                            </div>
+                                            <div class="form-floating mb-3 ">
+                                                <textarea required class="form-control" id="inputDescription" type="text" placeholder="write a brief something about the category" name="description" rows="40"></textarea>
+                                                <label for="inputDescription">Description</label>
                                             </div>
                                             <div class="mt-4 mb-0">
                                                 <div class="d-grid"><button  type="submit" class="btn btn-primary btn-block" href="{{route('crop.store')}}">Create Category</button></div>

@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('location');
             $table->text('description');
+            $table->integer('size');
+            $table->date('created_on');
             $table->boolean('is_mine')->default(false);
             $table->timestamps();
         });
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('farms');
+  //Schema::dropIfExists('farms');
     }
 };

@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\farm;
+use App\Models\farmLease;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -15,13 +17,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         User::factory(10)->create();
+         farm::factory(5)->create();
+         farmLease::factory(10)->create();
 
-        User::factory()->create([
-             'name' => 'Test User',
-             'email' => 'test@example.com',
-             'email' => 'test@example.com',
-
-         ]);
+//        User::factory()->create([
+//             'name' => 'Test User',
+//             'email' => 'test@example.com',
+//         ]);
     }
 }

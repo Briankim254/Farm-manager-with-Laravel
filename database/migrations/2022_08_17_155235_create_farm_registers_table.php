@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('farm_registers', function (Blueprint $table) {
             $table->string('farm_crop_id');
+            $table->id();
             $table->string('category_id');
             $table->string('total_cost');
             $table->string('quantity');
             $table->text('description');
+            $table->date('date_created');
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('farm_registers');
+       // Schema::dropIfExists('farm_registers');
     }
 };
